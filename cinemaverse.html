@@ -24,6 +24,9 @@
     --red: #C0392B;
     --green: #2E8B57;
     --teal: #1A8FA0;
+    --tamil-orange: #F39C12;
+    --action-red: #E74C3C;
+    --chart-purple: #9B59B6;
   }
 
   html { scroll-behavior: smooth; }
@@ -36,7 +39,6 @@
     line-height: 1.6;
   }
 
-  /* ─── GRAIN OVERLAY ─── */
   body::before {
     content: '';
     position: fixed;
@@ -48,7 +50,7 @@
     opacity: 0.35;
   }
 
-  /* ─── NAVBAR ─── */
+  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -61,7 +63,6 @@
     background: linear-gradient(180deg, rgba(5,6,8,0.97) 0%, rgba(5,6,8,0.7) 100%);
     border-bottom: 0.5px solid var(--border);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
   }
 
   .nav-logo {
@@ -91,14 +92,14 @@
 
   .nav-links {
     display: flex;
-    gap: 2.5rem;
+    gap: 2rem;
     list-style: none;
   }
 
   .nav-links a {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 500;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--text-muted);
     text-decoration: none;
@@ -130,7 +131,7 @@
     border-radius: 2px;
   }
 
-  /* ─── HERO ─── */
+  /* HERO */
   .hero {
     position: relative;
     height: 100vh;
@@ -153,7 +154,6 @@
       radial-gradient(ellipse at 20% 70%, rgba(26,143,160,0.08) 0%, transparent 50%);
   }
 
-  /* Simulated film grain / star field background */
   .hero-stars {
     position: absolute;
     inset: 0;
@@ -162,7 +162,6 @@
       radial-gradient(1px 1px at 72% 8%, rgba(255,255,255,0.3) 0%, transparent 100%),
       radial-gradient(1px 1px at 88% 35%, rgba(201,168,76,0.3) 0%, transparent 100%),
       radial-gradient(1px 1px at 42% 15%, rgba(255,255,255,0.2) 0%, transparent 100%),
-      radial-gradient(1px 1px at 60% 60%, rgba(201,168,76,0.2) 0%, transparent 100%),
       radial-gradient(2px 2px at 30% 45%, rgba(255,255,255,0.1) 0%, transparent 100%),
       radial-gradient(1px 1px at 92% 75%, rgba(201,168,76,0.4) 0%, transparent 100%);
   }
@@ -174,24 +173,10 @@
     height: 100%;
     background:
       linear-gradient(90deg, rgba(5,6,8,1) 0%, rgba(5,6,8,0.4) 30%, transparent 60%),
-      repeating-linear-gradient(
-        0deg,
-        transparent 0px,
-        transparent 60px,
-        rgba(255,255,255,0.015) 60px,
-        rgba(255,255,255,0.015) 62px
-      ),
-      linear-gradient(135deg,
-        #0a0b10 0%,
-        #12151e 20%,
-        #0d1018 40%,
-        #15191f 60%,
-        #090b0e 80%,
-        #111318 100%
-      );
+      repeating-linear-gradient(0deg, transparent 0px, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 62px),
+      linear-gradient(135deg, #0a0b10 0%, #12151e 20%, #0d1018 40%, #15191f 60%, #090b0e 80%, #111318 100%);
   }
 
-  /* Decorative film strip on right */
   .film-strip {
     position: absolute;
     right: 3%;
@@ -243,7 +228,7 @@
   .hero-sub {
     font-size: 0.9rem;
     color: var(--text-muted);
-    max-width: 420px;
+    max-width: 440px;
     line-height: 1.8;
     margin-bottom: 2.5rem;
     opacity: 0;
@@ -277,10 +262,7 @@
     clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
   }
 
-  .btn-primary:hover {
-    background: var(--gold-light);
-    transform: translateY(-2px);
-  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
 
   .btn-outline {
     display: inline-flex;
@@ -300,10 +282,7 @@
     transition: border-color 0.3s, color 0.3s;
   }
 
-  .btn-outline:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
   .hero-scroll {
     position: absolute;
@@ -324,10 +303,7 @@
     animation: scrollPulse 2s ease-in-out infinite;
   }
 
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
-  }
+  @keyframes scrollPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 
   .scroll-label {
     font-family: 'DM Mono', monospace;
@@ -338,7 +314,7 @@
     text-transform: uppercase;
   }
 
-  /* ─── STATS BAR ─── */
+  /* STATS BAR */
   .stats-bar {
     background: var(--surface);
     border-top: 0.5px solid var(--border);
@@ -351,9 +327,9 @@
 
   .stat-item {
     flex: 1;
-    min-width: 140px;
+    min-width: 120px;
     text-align: center;
-    padding: 0 20px;
+    padding: 0 16px;
     border-right: 0.5px solid var(--border-soft);
   }
 
@@ -368,16 +344,49 @@
   }
 
   .stat-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--text-dim);
   }
 
-  /* ─── SECTION LABELS ─── */
-  .section-wrap {
-    padding: 7rem 6%;
+  /* TICKER */
+  .ticker-wrap {
+    background: var(--gold);
+    padding: 12px 0;
+    overflow: hidden;
   }
+
+  .ticker-track {
+    display: flex;
+    white-space: nowrap;
+    animation: ticker 35s linear infinite;
+  }
+
+  .ticker-item {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #050608;
+    padding: 0 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .ticker-sep {
+    display: inline-block;
+    width: 5px; height: 5px;
+    background: rgba(5,6,8,0.35);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* SECTION */
+  .section-wrap { padding: 7rem 6%; }
 
   .section-header {
     display: flex;
@@ -412,7 +421,16 @@
     padding-bottom: 4px;
   }
 
-  /* ─── FEATURED FILM (BIG CARD) ─── */
+  .deco-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold-dim);
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 12px;
+  }
+
+  /* FEATURED FILM */
   .featured-film {
     position: relative;
     height: 540px;
@@ -420,19 +438,15 @@
     overflow: hidden;
     margin-bottom: 2px;
     cursor: pointer;
-    group: '';
   }
 
   .featured-film-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #0a0c14 0%, #101420 50%, #0c0f18 100%);
     transition: transform 0.6s ease;
   }
 
-  .featured-film:hover .featured-film-bg {
-    transform: scale(1.02);
-  }
+  .featured-film:hover .featured-film-bg { transform: scale(1.02); }
 
   .featured-decorative {
     position: absolute;
@@ -460,9 +474,7 @@
     transition: transform 0.4s ease;
   }
 
-  .featured-film:hover .featured-poster-area {
-    transform: translateY(-50%) translateX(-5px) rotate(-1deg);
-  }
+  .featured-film:hover .featured-poster-area { transform: translateY(-50%) translateX(-5px) rotate(-1deg); }
 
   .poster-placeholder {
     width: 100%;
@@ -485,15 +497,6 @@
 
   .poster-icon svg { width: 22px; height: 22px; fill: var(--gold-dim); }
 
-  .poster-title-mini {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    text-align: center;
-    padding: 0 12px;
-    line-height: 1.4;
-  }
-
   .featured-content {
     position: absolute;
     left: 6%;
@@ -502,6 +505,7 @@
     max-width: 480px;
   }
 
+  /* BADGES */
   .badge {
     display: inline-flex;
     align-items: center;
@@ -515,19 +519,16 @@
     margin-bottom: 1.5rem;
   }
 
-  .badge-featured {
-    border-color: var(--gold);
-    color: var(--gold);
-    background: rgba(201,168,76,0.08);
-  }
-
-  .badge-new { border-color: var(--teal); color: var(--teal); background: rgba(26,143,160,0.08); }
+  .badge-scifi { border-color: var(--teal); color: var(--teal); background: rgba(26,143,160,0.08); }
   .badge-horror { border-color: var(--red); color: var(--red); background: rgba(192,57,43,0.08); }
   .badge-animated { border-color: #7B68EE; color: #7B68EE; background: rgba(123,104,238,0.08); }
-  .badge-scifi { border-color: var(--teal); color: var(--teal); background: rgba(26,143,160,0.08); }
   .badge-drama { border-color: #E8A87C; color: #E8A87C; background: rgba(232,168,124,0.08); }
-  .badge-action { border-color: #E74C3C; color: #E74C3C; background: rgba(231,76,60,0.08); }
-  .badge-bollywood { border-color: #F39C12; color: #F39C12; background: rgba(243,156,18,0.08); }
+  .badge-action { border-color: var(--action-red); color: var(--action-red); background: rgba(231,76,60,0.08); }
+  .badge-bollywood { border-color: var(--tamil-orange); color: var(--tamil-orange); background: rgba(243,156,18,0.08); }
+  .badge-tamil { border-color: #FF6B35; color: #FF6B35; background: rgba(255,107,53,0.08); }
+  .badge-mythology { border-color: #9B59B6; color: #9B59B6; background: rgba(155,89,182,0.08); }
+  .badge-political { border-color: #27AE60; color: #27AE60; background: rgba(39,174,96,0.08); }
+  .badge-chart { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.08); }
 
   .badge-dot {
     width: 5px; height: 5px;
@@ -563,11 +564,7 @@
 
   .meta-item svg { width: 13px; height: 13px; fill: var(--gold-dim); }
 
-  .stars-display {
-    display: flex;
-    gap: 3px;
-  }
-
+  .stars-display { display: flex; gap: 3px; }
   .star { width: 12px; height: 12px; }
   .star-filled { fill: var(--gold); }
   .star-half { fill: url(#halfStar); }
@@ -622,12 +619,7 @@
     transition: transform 0.3s ease;
   }
 
-  .trailer-btn:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-    background: rgba(201,168,76,0.05);
-  }
-
+  .trailer-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.05); }
   .trailer-btn:hover::before { transform: scaleY(1); }
 
   .play-circle {
@@ -643,10 +635,9 @@
 
   .trailer-btn:hover .play-circle { background: var(--gold); border-color: var(--gold); }
   .trailer-btn:hover .play-circle svg { fill: #050608; }
-
   .play-circle svg { width: 10px; height: 10px; fill: currentColor; margin-left: 2px; }
 
-  /* ─── MOVIE GRID ─── */
+  /* MOVIES GRID */
   .movies-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -662,9 +653,7 @@
     transition: border-color 0.4s ease;
   }
 
-  .movie-card:hover {
-    border-color: var(--border);
-  }
+  .movie-card:hover { border-color: var(--border); }
 
   .movie-card-poster {
     position: relative;
@@ -678,9 +667,7 @@
     transition: transform 0.5s ease;
   }
 
-  .movie-card:hover .movie-card-poster-bg {
-    transform: scale(1.05);
-  }
+  .movie-card:hover .movie-card-poster-bg { transform: scale(1.05); }
 
   .poster-overlay {
     position: absolute;
@@ -688,16 +675,11 @@
     background: linear-gradient(180deg, transparent 40%, rgba(13,14,18,0.95) 100%);
   }
 
-  .card-genre-badge {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-  }
+  .card-genre-badge { position: absolute; top: 14px; left: 14px; }
 
   .card-rating {
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: 14px; right: 14px;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -713,9 +695,9 @@
     color: var(--gold);
   }
 
-  .card-body {
-    padding: 1.4rem 1.6rem 1.6rem;
-  }
+  .card-body { padding: 1.4rem 1.6rem 1.6rem; }
+
+  .card-thumb { width: 100%; height: 180px; object-fit: cover; border-radius: 14px; margin-bottom: 1rem; display: block; }
 
   .card-title {
     font-family: 'Cormorant Garamond', serif;
@@ -728,17 +710,13 @@
 
   .movie-card:hover .card-title { color: var(--gold-light); }
 
-  .card-meta-row {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
+  .card-meta-row { display: flex; gap: 0.8rem; margin-bottom: 1rem; flex-wrap: wrap; }
 
   .card-meta {
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     color: var(--text-dim);
     font-family: 'DM Mono', monospace;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
   }
 
   .card-divider {
@@ -781,31 +759,24 @@
     transition: all 0.3s;
   }
 
-  .card-trailer-btn:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-    background: rgba(201,168,76,0.05);
-  }
+  .card-trailer-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.05); }
+  .card-trailer-btn .play-circle { width: 24px; height: 24px; }
 
-  .card-trailer-btn .play-circle {
-    width: 24px; height: 24px;
-  }
+  .card-stars { display: flex; gap: 2px; }
 
-  .card-stars {
-    display: flex;
-    gap: 2px;
-  }
-
-  /* ─── POSTER ART (Illustrated SVG-style placeholders) ─── */
-  .pa-hailmary {
-    background: linear-gradient(160deg, #050a1a 0%, #0d1628 30%, #091420 60%, #020508 100%);
-  }
-
+  /* POSTER BACKGROUNDS */
+  .pa-hailmary { background: linear-gradient(160deg, #050a1a 0%, #0d1628 30%, #091420 60%, #020508 100%); }
   .pa-scream { background: linear-gradient(160deg, #100305 0%, #200510 30%, #150308 60%, #0a0205 100%); }
   .pa-hoppers { background: linear-gradient(160deg, #051510 0%, #0b2820 30%, #071a12 60%, #030b08 100%); }
   .pa-wuthering { background: linear-gradient(160deg, #0d0a05 0%, #1f1507 30%, #140e05 60%, #080604 100%); }
   .pa-dhurandhar { background: linear-gradient(160deg, #100a03 0%, #201505 30%, #150e03 60%, #0a0702 100%); }
   .pa-mario { background: linear-gradient(160deg, #0a0520 0%, #150a40 30%, #0d0728 60%, #050312 100%); }
+  .pa-karuppu { background: linear-gradient(160deg, #1a0530 0%, #2d0a50 30%, #1a0730 60%, #0a0318 100%); }
+  .pa-parasakthi { background: linear-gradient(160deg, #051a08 0%, #0a3010 30%, #061508 60%, #020a04 100%); }
+  .pa-vaa { background: linear-gradient(160deg, #0a0805 0%, #1e1508 30%, #130e05 60%, #060402 100%); }
+  .pa-odyssey { background: linear-gradient(160deg, #020818 0%, #051228 30%, #030c1a 60%, #010408 100%); }
+  .pa-spiderman { background: linear-gradient(160deg, #180205 0%, #2d0508 30%, #1a0305 60%, #080102 100%); }
+  .pa-crime { background: linear-gradient(160deg, #080808 0%, #161616 30%, #0e0e0e 60%, #040404 100%); }
 
   .poster-art {
     width: 100%;
@@ -830,47 +801,126 @@
     letter-spacing: 0.05em;
   }
 
-  /* ─── TICKER ─── */
-  .ticker-wrap {
-    background: var(--gold);
-    padding: 12px 0;
-    overflow: hidden;
-    border-top: 0.5px solid rgba(255,255,255,0.2);
-    border-bottom: 0.5px solid rgba(255,255,255,0.2);
+  /* SECTION DIVIDER */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0 6%;
   }
 
-  .ticker-track {
+  /* BOX OFFICE CHARTS */
+  .chart-section {
+    padding: 7rem 6%;
+    background: var(--surface2);
+  }
+
+  .chart-tabs {
     display: flex;
-    white-space: nowrap;
-    animation: ticker 30s linear infinite;
+    gap: 2px;
+    margin-bottom: 3rem;
   }
 
-  .ticker-item {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.3em;
+  .chart-tab {
+    padding: 10px 24px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
+    font-family: 'Syne', sans-serif;
+    cursor: pointer;
+    border: 0.5px solid var(--border-soft);
+    color: var(--text-dim);
+    background: transparent;
+    transition: all 0.3s;
+  }
+
+  .chart-tab.active {
+    background: var(--gold);
     color: #050608;
-    padding: 0 3rem;
+    border-color: var(--gold);
+  }
+
+  .chart-tab:hover:not(.active) { border-color: var(--border); color: var(--text-muted); }
+
+  .chart-content { display: none; }
+  .chart-content.active { display: block; }
+
+  .chart-bar-list { display: flex; flex-direction: column; gap: 1.2rem; }
+
+  .chart-row {
+    display: grid;
+    grid-template-columns: 28px 1fr 140px;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .chart-rank {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--gold);
+    text-align: right;
+  }
+
+  .chart-bar-wrap { position: relative; }
+
+  .chart-bar-bg {
+    height: 46px;
+    background: var(--surface3);
+    border: 0.5px solid var(--border-soft);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .chart-bar-fill {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    background: linear-gradient(90deg, rgba(201,168,76,0.25), rgba(201,168,76,0.08));
+    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .chart-bar-label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 14px;
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 10px;
   }
 
-  .ticker-sep {
-    display: inline-block;
-    width: 5px; height: 5px;
-    background: rgba(5,6,8,0.35);
-    border-radius: 50%;
-    flex-shrink: 0;
+  .chart-movie-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--text);
   }
 
-  @keyframes ticker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+  .chart-lang-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border: 0.5px solid;
+    color: var(--text-dim);
+    border-color: var(--border-soft);
   }
 
-  /* ─── EDITORIAL SECTION ─── */
+  .chart-value {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--gold);
+    text-align: right;
+  }
+
+  .chart-value span {
+    display: block;
+    font-size: 0.58rem;
+    color: var(--text-dim);
+    margin-top: 2px;
+    text-align: right;
+  }
+
+  /* EDITORIAL */
   .editorial-grid {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
@@ -883,11 +933,7 @@
     padding: 3rem;
   }
 
-  .editorial-side {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
+  .editorial-side { display: flex; flex-direction: column; gap: 2px; }
 
   .editorial-side-item {
     flex: 1;
@@ -919,11 +965,7 @@
     margin-bottom: 1.2rem;
   }
 
-  .editorial-attribution {
-    font-size: 0.7rem;
-    color: var(--text-dim);
-    letter-spacing: 0.12em;
-  }
+  .editorial-attribution { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.12em; }
 
   .side-item-title {
     font-family: 'Cormorant Garamond', serif;
@@ -931,13 +973,9 @@
     margin-bottom: 0.4rem;
   }
 
-  .side-item-snippet {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
+  .side-item-snippet { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
 
-  /* ─── FOOTER ─── */
+  /* FOOTER */
   footer {
     background: var(--surface);
     border-top: 0.5px solid var(--border);
@@ -946,8 +984,8 @@
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2.5rem;
     margin-bottom: 3rem;
   }
 
@@ -959,15 +997,10 @@
     margin-bottom: 0.8rem;
   }
 
-  .footer-tagline {
-    font-size: 0.8rem;
-    color: var(--text-dim);
-    line-height: 1.7;
-    max-width: 260px;
-  }
+  .footer-tagline { font-size: 0.8rem; color: var(--text-dim); line-height: 1.7; max-width: 240px; }
 
   .footer-col-title {
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--text-dim);
@@ -975,20 +1008,14 @@
     font-family: 'DM Mono', monospace;
   }
 
-  .footer-links {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
 
   .footer-links a {
-    font-size: 0.82rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
     color: var(--text-muted);
     text-decoration: none;
     transition: color 0.3s;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
   }
 
   .footer-links a:hover { color: var(--gold); }
@@ -1004,22 +1031,15 @@
   }
 
   .footer-copy {
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     color: var(--text-dim);
     font-family: 'DM Mono', monospace;
     letter-spacing: 0.1em;
   }
 
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
   .animate-in {
     opacity: 0;
@@ -1027,18 +1047,19 @@
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
 
-  .animate-in.visible {
-    opacity: 1;
-    transform: translateY(0);
+  .animate-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1100px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
     .editorial-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
     .nav-links { display: none; }
     .movies-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
     .featured-poster-area { display: none; }
+    .chart-row { grid-template-columns: 24px 1fr 100px; gap: 0.8rem; }
   }
 
   @media (max-width: 600px) {
@@ -1046,25 +1067,14 @@
     .stats-bar { gap: 0; }
     .hero-headline { font-size: 2.8rem; }
     .section-wrap { padding: 4rem 5%; }
+    .chart-section { padding: 4rem 5%; }
     .featured-film { height: auto; min-height: 400px; }
     .featured-content { position: static; transform: none; padding: 2rem; max-width: 100%; }
-    .featured-film-bg, .featured-decorative { position: absolute; }
-  }
-
-  /* ─── HORIZONTAL LINE DECORATION ─── */
-  .deco-line {
-    width: 40px;
-    height: 1px;
-    background: var(--gold-dim);
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 12px;
   }
 </style>
 </head>
 <body>
 
-<!-- SVG DEFS for half-star gradient -->
 <svg width="0" height="0" style="position:absolute">
   <defs>
     <linearGradient id="halfStar" x1="0" x2="1" y1="0" y2="0">
@@ -1074,136 +1084,131 @@
   </defs>
 </svg>
 
-<!-- ─── NAVBAR ─── -->
+<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">CinemaVerse <span></span></a>
+  <a href="#home" class="nav-logo">CinemaVerse <span></span></a>
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
-    <li><a href="#movies">Movies</a></li>
-    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#featured">Editor's Pick</a></li>
+    <li><a href="#movies">Hollywood</a></li>
+    <li><a href="#tamil">Tamil</a></li>
+    <li><a href="#action">Action</a></li>
+    <li><a href="#charts">Box Office</a></li>
   </ul>
   <div class="nav-year">2026 EDITION</div>
 </nav>
 
-<!-- ─── HERO ─── -->
+<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-stars"></div>
   <div class="hero-reel"></div>
   <div class="film-strip">
-    <div class="film-strip-hole"></div>
-    <div class="film-strip-hole"></div>
-    <div class="film-strip-hole"></div>
-    <div class="film-strip-hole"></div>
-    <div class="film-strip-hole"></div>
-    <div class="film-strip-hole"></div>
-    <div class="film-strip-hole"></div>
-    <div class="film-strip-hole"></div>
+    <div class="film-strip-hole"></div><div class="film-strip-hole"></div>
+    <div class="film-strip-hole"></div><div class="film-strip-hole"></div>
+    <div class="film-strip-hole"></div><div class="film-strip-hole"></div>
+    <div class="film-strip-hole"></div><div class="film-strip-hole"></div>
   </div>
-
-  <p class="hero-eyebrow">&#9632;&nbsp; Now Reviewing · 2026 Cinema</p>
+  <p class="hero-eyebrow">&#9632;&nbsp; Now Reviewing · 2026 World Cinema</p>
   <h1 class="hero-headline">Where <em>Cinema</em><br>Meets Critique</h1>
-  <p class="hero-sub">Curated reviews of the finest films from 2026 — from mind-bending sci-fi to visceral horror. Honest. Passionate. Uncompromising.</p>
+  <p class="hero-sub">Curated reviews of 2026's finest — Hollywood blockbusters, Tamil masala spectacles, and Bollywood epics. Honest. Passionate. Uncompromising.</p>
   <div class="hero-cta">
     <a href="#movies" class="btn-primary">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
       Browse Films
     </a>
-    <a href="#reviews" class="btn-outline">Read Reviews</a>
+    <a href="#charts" class="btn-outline">Box Office Charts</a>
   </div>
-
   <div class="hero-scroll">
     <div class="scroll-line"></div>
     <span class="scroll-label">Scroll</span>
   </div>
 </section>
 
-<!-- ─── TICKER ─── -->
+<!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track">
     <div class="ticker-item">Project Hail Mary <span class="ticker-sep"></span></div>
+    <div class="ticker-item">Karuppu — Suriya's Blockbuster <span class="ticker-sep"></span></div>
     <div class="ticker-item">Scream 7 <span class="ticker-sep"></span></div>
     <div class="ticker-item">Pixar's Hoppers <span class="ticker-sep"></span></div>
-    <div class="ticker-item">Wuthering Heights <span class="ticker-sep"></span></div>
     <div class="ticker-item">Dhurandhar: The Revenge <span class="ticker-sep"></span></div>
     <div class="ticker-item">The Super Mario Galaxy Movie <span class="ticker-sep"></span></div>
-    <div class="ticker-item">2026 Box Office Coverage <span class="ticker-sep"></span></div>
+    <div class="ticker-item">Parasakthi — Sivakarthikeyan <span class="ticker-sep"></span></div>
+    <div class="ticker-item">The Odyssey — Christopher Nolan <span class="ticker-sep"></span></div>
+    <div class="ticker-item">Crime 101 — Chris Hemsworth <span class="ticker-sep"></span></div>
     <div class="ticker-item">Project Hail Mary <span class="ticker-sep"></span></div>
+    <div class="ticker-item">Karuppu — Suriya's Blockbuster <span class="ticker-sep"></span></div>
     <div class="ticker-item">Scream 7 <span class="ticker-sep"></span></div>
     <div class="ticker-item">Pixar's Hoppers <span class="ticker-sep"></span></div>
-    <div class="ticker-item">Wuthering Heights <span class="ticker-sep"></span></div>
     <div class="ticker-item">Dhurandhar: The Revenge <span class="ticker-sep"></span></div>
     <div class="ticker-item">The Super Mario Galaxy Movie <span class="ticker-sep"></span></div>
-    <div class="ticker-item">2026 Box Office Coverage <span class="ticker-sep"></span></div>
+    <div class="ticker-item">Parasakthi — Sivakarthikeyan <span class="ticker-sep"></span></div>
+    <div class="ticker-item">The Odyssey — Christopher Nolan <span class="ticker-sep"></span></div>
+    <div class="ticker-item">Crime 101 — Chris Hemsworth <span class="ticker-sep"></span></div>
   </div>
 </div>
 
-<!-- ─── STATS BAR ─── -->
+<!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat-item">
-    <span class="stat-num">6</span>
+    <span class="stat-num">15</span>
     <span class="stat-label">Films Reviewed</span>
   </div>
   <div class="stat-item">
-    <span class="stat-num">$1.5B</span>
-    <span class="stat-label">Combined Box Office</span>
+    <span class="stat-num">₹3,500Cr</span>
+    <span class="stat-label">India Box Office</span>
   </div>
   <div class="stat-item">
-    <span class="stat-num">2026</span>
-    <span class="stat-label">Release Year</span>
+    <span class="stat-num">$2.4B</span>
+    <span class="stat-label">Hollywood WW</span>
   </div>
   <div class="stat-item">
     <span class="stat-num">4.1<span style="font-size:1rem;color:var(--gold-dim)">/5</span></span>
     <span class="stat-label">Avg. Rating</span>
   </div>
   <div class="stat-item">
-    <span class="stat-num">5</span>
+    <span class="stat-num">4</span>
+    <span class="stat-label">Languages</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">8</span>
     <span class="stat-label">Genres Covered</span>
   </div>
 </div>
 
-<!-- ─── FEATURED FILM ─── -->
-<section class="section-wrap" style="padding-bottom: 0;">
+<!-- FEATURED — EDITOR'S PICK -->
+<section class="section-wrap" style="padding-bottom: 0;" id="featured">
   <div class="section-header animate-in">
     <div>
       <p class="section-eyebrow"><span class="deco-line"></span>Editor's Pick</p>
       <h2 class="section-title">Film of the Season</h2>
     </div>
-    <span class="section-count">01 / 06</span>
+    <span class="section-count">01 / 15</span>
   </div>
-
   <div class="featured-film animate-in">
     <div class="featured-film-bg pa-hailmary">
-      <!-- Star field art -->
       <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.6" viewBox="0 0 800 540" xmlns="http://www.w3.org/2000/svg">
         <circle cx="620" cy="80" r="1.5" fill="#C9A84C" opacity="0.7"/>
         <circle cx="580" cy="130" r="1" fill="white" opacity="0.4"/>
         <circle cx="680" cy="60" r="1" fill="white" opacity="0.5"/>
         <circle cx="720" cy="200" r="1.5" fill="#C9A84C" opacity="0.4"/>
         <circle cx="640" cy="300" r="1" fill="white" opacity="0.3"/>
-        <circle cx="700" cy="380" r="1" fill="white" opacity="0.25"/>
-        <circle cx="760" cy="450" r="1.5" fill="#C9A84C" opacity="0.35"/>
-        <circle cx="550" cy="250" r="1" fill="white" opacity="0.3"/>
-        <!-- Spacecraft silhouette suggestion -->
         <ellipse cx="660" cy="270" rx="70" ry="20" fill="none" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
-        <line x1="660" y1="250" x2="660" y2="200" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
-        <!-- Petrova line glow suggestion -->
         <line x1="400" y1="540" x2="660" y2="120" stroke="rgba(26,143,160,0.12)" stroke-width="3"/>
         <line x1="400" y1="540" x2="660" y2="120" stroke="rgba(26,143,160,0.06)" stroke-width="8"/>
       </svg>
     </div>
     <div class="featured-decorative"></div>
-
     <div class="featured-poster-area">
       <div class="poster-placeholder">
         <div class="poster-icon">
           <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
         </div>
-        <p class="poster-title-mini" style="color:rgba(201,168,76,0.6);font-family:'Cormorant Garamond',serif;font-style:italic;">Project<br>Hail Mary</p>
-        <p style="font-family:'DM Mono',monospace;font-size:0.55rem;color:var(--text-dim);letter-spacing:0.2em;">2026 · PG-13</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:0.8rem;color:rgba(201,168,76,0.6);font-style:italic;text-align:center;">Project<br>Hail Mary</p>
+        <p style="font-family:'DM Mono',monospace;font-size:0.55rem;color:var(--text-dim);letter-spacing:0.2em;">2026 · PG-13 · IMAX</p>
       </div>
     </div>
-
     <div class="featured-content">
       <div class="badge badge-scifi"><span class="badge-dot"></span> Sci-Fi · Editor's Choice</div>
       <h2 class="featured-title">Project<br>Hail Mary</h2>
@@ -1218,75 +1223,52 @@
           </div>
           <span class="rating-num">4.7 / 5</span>
         </div>
-        <div class="meta-item">
-          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
-          Ryan Gosling
-        </div>
-        <div class="meta-item">Mar 20, 2026 · 2h 36m</div>
+        <div class="meta-item">Ryan Gosling · Lord &amp; Miller</div>
+        <div class="meta-item">Mar 20, 2026 · 2h 36m · $658M WW</div>
       </div>
-      <p class="featured-review">"A transcendent piece of science fiction filmmaking. Ryan Gosling carries an impossible premise with warmth and wit — Lord & Miller deliver their magnum opus. The year's most essential cinema."</p>
+      <p class="featured-review">"A transcendent piece of science fiction filmmaking. Gosling carries an impossible premise with warmth and wit. Lord &amp; Miller deliver their magnum opus — science fiction as it was always meant to be."</p>
       <a href="https://www.youtube.com/watch?v=eSBX8Ky53AI" target="_blank" class="trailer-btn">
-        <div class="play-circle">
-          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </div>
+        <div class="play-circle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         Watch Trailer
       </a>
     </div>
   </div>
 </section>
 
-<!-- ─── MOVIES GRID ─── -->
+<!-- HOLLYWOOD SECTION -->
 <section class="section-wrap" id="movies">
   <div class="section-header animate-in">
     <div>
-      <p class="section-eyebrow"><span class="deco-line"></span>2026 Releases</p>
-      <h2 class="section-title">Latest Reviews</h2>
+      <p class="section-eyebrow"><span class="deco-line"></span>Hollywood 2026</p>
+      <h2 class="section-title">English Releases</h2>
     </div>
-    <span class="section-count" id="reviews">06 Films</span>
+    <span class="section-count">06 Films</span>
   </div>
-
   <div class="movies-grid">
 
-    <!-- SCREAM 7 -->
+    <!-- Scream 7 -->
     <div class="movie-card animate-in">
       <div class="movie-card-poster">
         <div class="movie-card-poster-bg pa-scream poster-art">
           <svg width="200" height="260" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" style="position:absolute;opacity:0.5">
             <circle cx="100" cy="90" r="55" fill="none" stroke="rgba(192,57,43,0.25)" stroke-width="1"/>
-            <circle cx="100" cy="90" r="35" fill="none" stroke="rgba(192,57,43,0.2)" stroke-width="0.5"/>
-            <!-- Ghostface mask suggestion -->
             <path d="M78,75 Q100,55 122,75 Q130,95 120,115 Q110,130 100,125 Q90,130 80,115 Q70,95 78,75Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-            <path d="M88,88 Q95,84 100,88 Q105,84 112,88" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-            <circle cx="90" cy="95" r="4" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-            <circle cx="110" cy="95" r="4" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
             <path d="M92,108 Q100,114 108,108" fill="none" stroke="rgba(192,57,43,0.3)" stroke-width="1"/>
-            <line x1="60" y1="180" x2="140" y2="180" stroke="rgba(192,57,43,0.08)" stroke-width="40"/>
           </svg>
           <div class="poster-art-label">Scream 7</div>
         </div>
         <div class="poster-overlay"></div>
         <div class="card-genre-badge"><div class="badge badge-horror"><span class="badge-dot"></span> Horror</div></div>
-        <div class="card-rating">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <span class="card-rating-num">3.2</span>
-        </div>
+        <div class="card-rating"><svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="card-rating-num">3.2</span></div>
       </div>
       <div class="card-body">
+        <img class="card-thumb" src="https://via.placeholder.com/600x340/0a0b10/ffd54a?text=Scream+7" alt="Scream 7 poster">
         <h3 class="card-title">Scream 7</h3>
-        <div class="card-meta-row">
-          <span class="card-meta">Feb 27, 2026</span>
-          <span class="card-meta">Neve Campbell</span>
-          <span class="card-meta">2h 14m</span>
-        </div>
+        <div class="card-meta-row"><span class="card-meta">Feb 27, 2026</span><span class="card-meta">Neve Campbell</span><span class="card-meta">$213M WW</span></div>
         <div class="card-divider"></div>
-        <p class="card-review">"Neve Campbell's return is the heart of a film that struggles to stick the landing. Bold swings in act two are undercut by a muddled finale — yet franchise devotees will find enough to savour."</p>
+        <p class="card-review">"Neve Campbell's return adds dignity to a franchise at a crossroads. Bold swings in act two are undercut by a chaotic finale — yet devotees will find enough to savour."</p>
         <div class="card-actions">
-          <a href="https://www.youtube.com/results?search_query=Scream+7+2026+official+trailer" target="_blank" class="card-trailer-btn">
-            <div class="play-circle">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            Trailer
-          </a>
+          <a href="https://www.youtube.com/results?search_query=Scream+7+2026+official+trailer" target="_blank" class="card-trailer-btn"><div class="play-circle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>Trailer</a>
           <div class="card-stars">
             <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -1298,45 +1280,29 @@
       </div>
     </div>
 
-    <!-- HOPPERS -->
+    <!-- Hoppers -->
     <div class="movie-card animate-in">
       <div class="movie-card-poster">
         <div class="movie-card-poster-bg pa-hoppers poster-art">
           <svg width="200" height="260" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" style="position:absolute;opacity:0.55">
-            <!-- Forest / nature suggestion -->
-            <circle cx="100" cy="200" r="120" fill="rgba(46,139,87,0.08)"/>
             <path d="M60,200 L80,140 L100,170 L120,130 L140,200Z" fill="rgba(46,139,87,0.1)" stroke="rgba(46,139,87,0.15)" stroke-width="0.5"/>
-            <path d="M30,200 L55,155 L80,175 L105,145 L130,168 L155,135 L170,200Z" fill="rgba(46,139,87,0.07)"/>
-            <!-- Robotic beaver silhouette suggestion -->
             <circle cx="100" cy="95" r="28" fill="rgba(26,143,160,0.12)" stroke="rgba(26,143,160,0.2)" stroke-width="0.5"/>
-            <circle cx="90" cy="92" r="5" fill="rgba(255,255,255,0.06)"/>
-            <circle cx="110" cy="92" r="5" fill="rgba(255,255,255,0.06)"/>
             <rect x="88" y="108" width="24" height="4" rx="2" fill="rgba(26,143,160,0.15)"/>
           </svg>
           <div class="poster-art-label">Hoppers</div>
         </div>
         <div class="poster-overlay"></div>
         <div class="card-genre-badge"><div class="badge badge-animated"><span class="badge-dot"></span> Animation</div></div>
-        <div class="card-rating">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <span class="card-rating-num">4.3</span>
-        </div>
+        <div class="card-rating"><svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="card-rating-num">4.3</span></div>
       </div>
       <div class="card-body">
+        <img class="card-thumb" src="https://via.placeholder.com/600x340/08171c/7ed3a3?text=Hoppers" alt="Hoppers poster">
         <h3 class="card-title">Hoppers</h3>
-        <div class="card-meta-row">
-          <span class="card-meta">Mar 6, 2026</span>
-          <span class="card-meta">Piper Curda · Jon Hamm</span>
-        </div>
+        <div class="card-meta-row"><span class="card-meta">Mar 6, 2026</span><span class="card-meta">Piper Curda · Jon Hamm</span><span class="card-meta">$383M WW</span></div>
         <div class="card-divider"></div>
-        <p class="card-review">"Pixar's triumphant return to form. A girl who transfers her mind into a robotic beaver to save wildlife is as inventive as it sounds — equal parts heart and hilarity. Meryl Streep steals every scene."</p>
+        <p class="card-review">"Pixar's triumphant return to form. A girl who transfers her mind into a robotic beaver to save wildlife — equal parts heart and hilarity. Meryl Streep steals every scene."</p>
         <div class="card-actions">
-          <a href="https://www.youtube.com/results?search_query=Pixar+Hoppers+2026+trailer" target="_blank" class="card-trailer-btn">
-            <div class="play-circle">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            Trailer
-          </a>
+          <a href="https://www.youtube.com/results?search_query=Pixar+Hoppers+2026+trailer" target="_blank" class="card-trailer-btn"><div class="play-circle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>Trailer</a>
           <div class="card-stars">
             <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -1348,47 +1314,30 @@
       </div>
     </div>
 
-    <!-- WUTHERING HEIGHTS -->
+    <!-- Wuthering Heights -->
     <div class="movie-card animate-in">
       <div class="movie-card-poster">
         <div class="movie-card-poster-bg pa-wuthering poster-art">
           <svg width="200" height="260" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" style="position:absolute;opacity:0.5">
-            <!-- Moors landscape -->
             <path d="M0,160 Q50,140 100,155 Q150,170 200,150 L200,260 L0,260Z" fill="rgba(139,110,30,0.12)"/>
-            <path d="M0,180 Q60,165 110,175 Q160,185 200,168 L200,260 L0,260Z" fill="rgba(139,110,30,0.08)"/>
-            <!-- Manor silhouette -->
             <rect x="65" y="90" width="70" height="70" fill="rgba(0,0,0,0.3)" stroke="rgba(201,168,76,0.12)" stroke-width="0.5"/>
             <polygon points="65,90 100,60 135,90" fill="rgba(0,0,0,0.2)" stroke="rgba(201,168,76,0.1)" stroke-width="0.5"/>
-            <rect x="85" y="120" width="12" height="20" fill="rgba(201,168,76,0.08)"/>
-            <rect x="103" y="120" width="12" height="20" fill="rgba(201,168,76,0.08)"/>
-            <!-- Moon -->
             <circle cx="155" cy="50" r="18" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.12)" stroke-width="0.5"/>
           </svg>
           <div class="poster-art-label">Wuthering Heights</div>
         </div>
         <div class="poster-overlay"></div>
         <div class="card-genre-badge"><div class="badge badge-drama"><span class="badge-dot"></span> Drama · Romance</div></div>
-        <div class="card-rating">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <span class="card-rating-num">4.5</span>
-        </div>
+        <div class="card-rating"><svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="card-rating-num">4.5</span></div>
       </div>
       <div class="card-body">
+        <img class="card-thumb" src="https://via.placeholder.com/600x340/09090f/f5dfb9?text=Wuthering+Heights" alt="Wuthering Heights poster">
         <h3 class="card-title">Wuthering Heights</h3>
-        <div class="card-meta-row">
-          <span class="card-meta">2026</span>
-          <span class="card-meta">Period Epic</span>
-          <span class="card-meta">2h 28m</span>
-        </div>
+        <div class="card-meta-row"><span class="card-meta">2026 · Warner Bros.</span><span class="card-meta">Period Epic</span><span class="card-meta">$84M US</span></div>
         <div class="card-divider"></div>
-        <p class="card-review">"A ravishing adaptation of Brontë's immortal novel. The Yorkshire moors have never looked so hauntingly gorgeous. Raw passion and grief rendered with extraordinary cinematic craft."</p>
+        <p class="card-review">"A ravishing adaptation of Brontë's immortal novel. The Yorkshire moors have never looked so hauntingly gorgeous. Raw passion rendered with extraordinary cinematic craft."</p>
         <div class="card-actions">
-          <a href="https://www.youtube.com/results?search_query=Wuthering+Heights+2026+movie+trailer" target="_blank" class="card-trailer-btn">
-            <div class="play-circle">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            Trailer
-          </a>
+          <a href="https://www.youtube.com/results?search_query=Wuthering+Heights+2026+movie+trailer" target="_blank" class="card-trailer-btn"><div class="play-circle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>Trailer</a>
           <div class="card-stars">
             <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -1400,48 +1349,31 @@
       </div>
     </div>
 
-    <!-- DHURANDHAR -->
+    <!-- Dhurandhar -->
     <div class="movie-card animate-in">
       <div class="movie-card-poster">
         <div class="movie-card-poster-bg pa-dhurandhar poster-art">
           <svg width="200" height="260" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" style="position:absolute;opacity:0.5">
-            <!-- Indian motif / warrior suggestion -->
-            <circle cx="100" cy="200" r="100" fill="rgba(243,156,18,0.05)"/>
-            <!-- Sword silhouette -->
             <rect x="98" y="40" width="4" height="140" fill="rgba(243,156,18,0.15)" rx="1"/>
             <path d="M90,50 L100,40 L110,50Z" fill="rgba(243,156,18,0.2)"/>
-            <!-- Decorative ring -->
             <circle cx="100" cy="120" r="40" fill="none" stroke="rgba(243,156,18,0.1)" stroke-width="1" stroke-dasharray="4,4"/>
-            <circle cx="100" cy="120" r="55" fill="none" stroke="rgba(243,156,18,0.06)" stroke-width="0.5"/>
-            <!-- Flame sparks -->
             <circle cx="75" cy="180" r="2" fill="rgba(243,156,18,0.3)"/>
             <circle cx="125" cy="175" r="1.5" fill="rgba(243,156,18,0.25)"/>
-            <circle cx="100" cy="185" r="1" fill="rgba(243,156,18,0.2)"/>
           </svg>
           <div class="poster-art-label">Dhurandhar: The Revenge</div>
         </div>
         <div class="poster-overlay"></div>
         <div class="card-genre-badge"><div class="badge badge-bollywood"><span class="badge-dot"></span> Bollywood · Action</div></div>
-        <div class="card-rating">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <span class="card-rating-num">4.0</span>
-        </div>
+        <div class="card-rating"><svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="card-rating-num">4.0</span></div>
       </div>
       <div class="card-body">
+        <img class="card-thumb" src="https://via.placeholder.com/600x340/0f0904/f3a412?text=Dhurandhar+The+Revenge" alt="Dhurandhar: The Revenge poster">
         <h3 class="card-title">Dhurandhar: The Revenge</h3>
-        <div class="card-meta-row">
-          <span class="card-meta">2026</span>
-          <span class="card-meta">Hindi · Action</span>
-        </div>
+        <div class="card-meta-row"><span class="card-meta">2026 · Hindi</span><span class="card-meta">₹1,837Cr WW</span><span class="card-meta">#1 India</span></div>
         <div class="card-divider"></div>
-        <p class="card-review">"A thunderous Bollywood spectacle. Electrifying action choreography paired with emotional depth that defies the genre. One of Hindi cinema's most ambitious productions in recent memory."</p>
+        <p class="card-review">"India's highest-grossing film of 2026. A thunderous Bollywood spectacle with electrifying action choreography paired with emotional depth that defies the genre."</p>
         <div class="card-actions">
-          <a href="https://www.youtube.com/results?search_query=Dhurandhar+The+Revenge+2026+trailer" target="_blank" class="card-trailer-btn">
-            <div class="play-circle">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            Trailer
-          </a>
+          <a href="https://www.youtube.com/results?search_query=Dhurandhar+The+Revenge+2026+trailer" target="_blank" class="card-trailer-btn"><div class="play-circle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>Trailer</a>
           <div class="card-stars">
             <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -1453,49 +1385,32 @@
       </div>
     </div>
 
-    <!-- SUPER MARIO GALAXY MOVIE -->
+    <!-- Mario -->
     <div class="movie-card animate-in">
       <div class="movie-card-poster">
         <div class="movie-card-poster-bg pa-mario poster-art">
           <svg width="200" height="260" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" style="position:absolute;opacity:0.55">
-            <!-- Galaxy / space swirl -->
             <circle cx="100" cy="110" r="80" fill="none" stroke="rgba(138,68,255,0.12)" stroke-width="1"/>
-            <circle cx="100" cy="110" r="55" fill="none" stroke="rgba(138,68,255,0.1)" stroke-width="0.5"/>
             <circle cx="100" cy="110" r="30" fill="rgba(138,68,255,0.06)" stroke="rgba(138,68,255,0.15)" stroke-width="0.5"/>
-            <!-- Stars scattered -->
             <circle cx="50" cy="50" r="1.5" fill="rgba(201,168,76,0.6)"/>
             <circle cx="160" cy="70" r="1" fill="white" opacity="0.5"/>
-            <circle cx="40" cy="160" r="1" fill="white" opacity="0.4"/>
-            <circle cx="170" cy="150" r="1.5" fill="rgba(201,168,76,0.5)"/>
-            <circle cx="130" cy="40" r="1" fill="white" opacity="0.3"/>
-            <!-- Planet suggestion -->
             <circle cx="100" cy="110" r="22" fill="rgba(255,100,50,0.15)" stroke="rgba(255,100,50,0.2)" stroke-width="0.5"/>
             <ellipse cx="100" cy="112" rx="30" ry="8" fill="none" stroke="rgba(201,168,76,0.15)" stroke-width="0.5"/>
           </svg>
           <div class="poster-art-label">Super Mario Galaxy</div>
         </div>
         <div class="poster-overlay"></div>
-        <div class="card-genre-badge"><div class="badge badge-animated"><span class="badge-dot"></span> Animation · Adventure</div></div>
-        <div class="card-rating">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <span class="card-rating-num">4.4</span>
-        </div>
+        <div class="card-genre-badge"><div class="badge badge-animated"><span class="badge-dot"></span> Animation</div></div>
+        <div class="card-rating"><svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="card-rating-num">4.4</span></div>
       </div>
       <div class="card-body">
-        <h3 class="card-title">The Super Mario Galaxy Movie</h3>
-        <div class="card-meta-row">
-          <span class="card-meta">2026</span>
-          <span class="card-meta">Animated</span>
-        </div>
+        <img class="card-thumb" src="https://via.placeholder.com/600x340/1c0a2d/ffce73?text=Super+Mario+Galaxy" alt="Super Mario Galaxy Movie poster">
+        <h3 class="card-title">Super Mario Galaxy Movie</h3>
+        <div class="card-meta-row"><span class="card-meta">2026 · Universal</span><span class="card-meta">$940M WW</span><span class="card-meta">#1 Hollywood</span></div>
         <div class="card-divider"></div>
-        <p class="card-review">"Nintendo's galaxy-spanning adventure is pure joy distilled onto screen. Vibrant cosmic vistas, infectious music, and an emotional core that surprises. The sequel the 2023 film deserved."</p>
+        <p class="card-review">"Nintendo's galaxy-spanning sequel is pure joy distilled onto screen. Vibrant cosmic vistas, infectious music, and an emotional core that genuinely surprises."</p>
         <div class="card-actions">
-          <a href="https://www.youtube.com/results?search_query=Super+Mario+Galaxy+Movie+2026+trailer" target="_blank" class="card-trailer-btn">
-            <div class="play-circle">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            Trailer
-          </a>
+          <a href="https://www.youtube.com/results?search_query=Super+Mario+Galaxy+Movie+2026+trailer" target="_blank" class="card-trailer-btn"><div class="play-circle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>Trailer</a>
           <div class="card-stars">
             <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -1507,51 +1422,31 @@
       </div>
     </div>
 
-    <!-- BLANK SPACE - Project Hail Mary mini card -->
+    <!-- Project Hail Mary card -->
     <div class="movie-card animate-in">
       <div class="movie-card-poster">
         <div class="movie-card-poster-bg pa-hailmary poster-art">
           <svg width="200" height="260" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" style="position:absolute;opacity:0.55">
-            <!-- Deep space -->
-            <circle cx="100" cy="110" r="90" fill="rgba(26,143,160,0.04)"/>
             <circle cx="160" cy="55" r="2" fill="rgba(201,168,76,0.6)"/>
             <circle cx="45" cy="80" r="1.5" fill="white" opacity="0.4"/>
-            <circle cx="170" cy="180" r="1" fill="white" opacity="0.3"/>
-            <circle cx="30" cy="150" r="1.5" fill="rgba(201,168,76,0.4)"/>
-            <circle cx="130" cy="200" r="1" fill="white" opacity="0.25"/>
-            <!-- Spacecraft Hail Mary -->
             <ellipse cx="100" cy="115" rx="50" ry="14" fill="rgba(26,143,160,0.1)" stroke="rgba(26,143,160,0.2)" stroke-width="0.5"/>
             <rect x="90" y="95" width="20" height="40" rx="4" fill="rgba(26,143,160,0.08)" stroke="rgba(26,143,160,0.15)" stroke-width="0.5"/>
-            <!-- Engine glow -->
             <ellipse cx="100" cy="135" rx="8" ry="5" fill="rgba(201,168,76,0.2)"/>
-            <!-- Petrova line -->
-            <line x1="0" y1="260" x2="100" y2="95" stroke="rgba(26,143,160,0.15)" stroke-width="2"/>
           </svg>
           <div class="poster-art-label">Project Hail Mary</div>
         </div>
         <div class="poster-overlay"></div>
         <div class="card-genre-badge"><div class="badge badge-scifi"><span class="badge-dot"></span> Sci-Fi · IMAX</div></div>
-        <div class="card-rating">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <span class="card-rating-num">4.7</span>
-        </div>
+        <div class="card-rating"><svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="card-rating-num">4.7</span></div>
       </div>
       <div class="card-body">
+        <img class="card-thumb" src="https://via.placeholder.com/600x340/081b2d/90d3ff?text=Project+Hail+Mary" alt="Project Hail Mary poster">
         <h3 class="card-title">Project Hail Mary</h3>
-        <div class="card-meta-row">
-          <span class="card-meta">Mar 20, 2026</span>
-          <span class="card-meta">Ryan Gosling</span>
-          <span class="card-meta">$658M WW</span>
-        </div>
+        <div class="card-meta-row"><span class="card-meta">Mar 20, 2026</span><span class="card-meta">Ryan Gosling</span><span class="card-meta">$658M WW</span></div>
         <div class="card-divider"></div>
-        <p class="card-review">"Lord & Miller's finest hour. A lone astronaut, a dying sun, and an alien friendship that will break your heart. Science fiction as it was always meant to be — humane, thrilling, and unforgettable."</p>
+        <p class="card-review">"Lord &amp; Miller's finest hour. A lone astronaut, a dying sun, and an alien friendship that will break your heart. Humane, thrilling, and unforgettable."</p>
         <div class="card-actions">
-          <a href="https://www.youtube.com/watch?v=eSBX8Ky53AI" target="_blank" class="card-trailer-btn">
-            <div class="play-circle">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            Trailer
-          </a>
+          <a href="https://www.youtube.com/watch?v=eSBX8Ky53AI" target="_blank" class="card-trailer-btn"><div class="play-circle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>Trailer</a>
           <div class="card-stars">
             <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -1566,8 +1461,558 @@
   </div>
 </section>
 
-<!-- ─── EDITORIAL / CRITICS CORNER ─── -->
-<section class="section-wrap" style="background: var(--surface2);">
+<!-- TAMIL SECTION -->
+<section class="section-wrap" id="tamil" style="background: var(--surface2);">
+  <div class="section-header animate-in">
+    <div>
+      <p class="section-eyebrow"><span class="deco-line"></span>Kollywood 2026</p>
+      <h2 class="section-title">Best Tamil Movies</h2>
+    </div>
+    <span class="section-count">03 Films</span>
+  </div>
+  <div class="movies-grid">
+
+    <!-- Karuppu -->
+    <div class="movie-card animate-in">
+      <div class="movie-card-poster">
+        <div class="movie-card-poster-bg pa-karuppu poster-art">
+          <svg width="200" height="260" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" style="position:absolute;opacity:0.6">
+            <circle cx="100" cy="100" r="65" fill="none" stroke="rgba(155,89,182,0.2)" stroke-width="1"/>
+            <circle cx="100" cy="100" r="40" fill="rgba(155,89,182,0.06)" stroke="rgba(155,89,182,0.18)" stroke-width="0.5"/>
+            <!-- Deity trident suggestion -->
+            <line x1="100" y1="40" x2="100" y2="155" stroke="rgba(155,89,182,0.3)" stroke-width="2"/>
+            <line x1="88" y1="52" x2="100" y2="40" stroke="rgba(155,89,182,0.25)" stroke-width="1.5"/>
+            <line x1="112" y1="52" x2="100" y2="40" stroke="rgba(155,89,182,0.25)" stroke-width="1.5"/>
+            <line x1="82" y1="60" x2="88" y2="52" stroke="rgba(155,89,182,0.2)" stroke-width="1"/>
+            <line x1="118" y1="60" x2="112" y2="52" stroke="rgba(155,89,182,0.2)" stroke-width="1"/>
+            <!-- Glow orbs -->
+            <circle cx="72" cy="170" r="3" fill="rgba(155,89,182,0.4)"/>
+            <circle cx="128" cy="175" r="2" fill="rgba(155,89,182,0.35)"/>
+            <circle cx="100" cy="185" r="2.5" fill="rgba(155,89,182,0.3)"/>
+            <!-- Halo -->
+            <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(155,89,182,0.06)" stroke-width="2"/>
+          </svg>
+          <div class="poster-art-label">Karuppu</div>
+        </div>
+        <div class="poster-overlay"></div>
+        <div class="card-genre-badge"><div class="badge badge-mythology"><span class="badge-dot"></span> Tamil · Mythology</div></div>
+        <div class="card-rating"><svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="card-rating-num">4.3</span></div>
+      </div>
+      <div class="card-body">
+        <img class="card-thumb" src="https://via.placeholder.com/600x340/1b052f/e29bff?text=Karuppu" alt="Karuppu poster">
+        <h3 class="card-title">Karuppu</h3>
+        <div class="card-meta-row"><span class="card-meta">May 14, 2026</span><span class="card-meta">Suriya · Trisha</span><span class="card-meta">₹161Cr+ India</span></div>
+        <div class="card-divider"></div>
+        <p class="card-review">"Suriya's greatest blockbuster, and it shows. RJ Balaji channels divine mythology into a courtroom fantasy with mass masala flair. The deity-as-lawyer premise somehow works — brilliantly."</p>
+        <div class="card-actions">
+          <a href="https://www.youtube.com/results?search_query=Karuppu+2026+Tamil+trailer+Suriya" target="_blank" class="card-trailer-btn"><div class="play-circle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>Trailer</a>
+          <div class="card-stars">
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-half" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parasakthi -->
+    <div class="movie-card animate-in">
+      <div class="movie-card-poster">
+        <div class="movie-card-poster-bg pa-parasakthi poster-art">
+          <svg width="200" height="260" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" style="position:absolute;opacity:0.55">
+            <!-- Protest march suggestion -->
+            <line x1="30" y1="180" x2="170" y2="180" stroke="rgba(39,174,96,0.2)" stroke-width="2"/>
+            <line x1="30" y1="170" x2="170" y2="170" stroke="rgba(39,174,96,0.1)" stroke-width="1"/>
+            <!-- Crowd silhouettes -->
+            <ellipse cx="60" cy="170" rx="8" ry="18" fill="rgba(39,174,96,0.12)"/>
+            <ellipse cx="80" cy="168" rx="8" ry="20" fill="rgba(39,174,96,0.12)"/>
+            <ellipse cx="100" cy="165" rx="9" ry="22" fill="rgba(39,174,96,0.15)"/>
+            <ellipse cx="120" cy="168" rx="8" ry="20" fill="rgba(39,174,96,0.12)"/>
+            <ellipse cx="140" cy="170" rx="8" ry="18" fill="rgba(39,174,96,0.12)"/>
+            <!-- Flag/banner -->
+            <line x1="100" y1="60" x2="100" y2="145" stroke="rgba(39,174,96,0.25)" stroke-width="1.5"/>
+            <rect x="100" y="60" width="35" height="20" rx="1" fill="rgba(39,174,96,0.15)" stroke="rgba(39,174,96,0.2)" stroke-width="0.5"/>
+            <!-- 1965 text-like marks -->
+            <line x1="50" y1="100" x2="150" y2="100" stroke="rgba(39,174,96,0.06)" stroke-width="20"/>
+          </svg>
+          <div class="poster-art-label">Parasakthi</div>
+        </div>
+        <div class="poster-overlay"></div>
+        <div class="card-genre-badge"><div class="badge badge-political"><span class="badge-dot"></span> Tamil · Political</div></div>
+        <div class="card-rating"><svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="card-rating-num">3.5</span></div>
+      </div>
+      <div class="card-body">
+        <img class="card-thumb" src="https://via.placeholder.com/600x340/081a08/7ed397?text=Parasakthi" alt="Parasakthi poster">
+        <h3 class="card-title">Parasakthi</h3>
+        <div class="card-meta-row"><span class="card-meta">Jan 10, 2026</span><span class="card-meta">Sivakarthikeyan</span><span class="card-meta">₹85Cr WW</span></div>
+        <div class="card-divider"></div>
+        <p class="card-review">"Sudha Kongara's period political drama is richly detailed and historically charged. Set during the 1965 anti-Hindi agitations, Sivakarthikeyan delivers a career-defining dramatic turn."</p>
+        <div class="card-actions">
+          <a href="https://www.youtube.com/results?search_query=Parasakthi+2026+Tamil+trailer+Sivakarthikeyan" target="_blank" class="card-trailer-btn"><div class="play-circle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>Trailer</a>
+          <div class="card-stars">
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-half" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-empty" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vaa Vaathiyaar -->
+    <div class="movie-card animate-in">
+      <div class="movie-card-poster">
+        <div class="movie-card-poster-bg pa-vaa poster-art">
+          <svg width="200" height="260" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" style="position:absolute;opacity:0.5">
+            <!-- Classroom/school suggestion -->
+            <rect x="30" y="60" width="140" height="90" fill="rgba(139,110,30,0.08)" stroke="rgba(139,110,30,0.15)" stroke-width="0.5"/>
+            <!-- Chalkboard -->
+            <rect x="40" y="70" width="120" height="55" rx="1" fill="rgba(0,0,0,0.3)" stroke="rgba(201,168,76,0.1)" stroke-width="0.5"/>
+            <!-- Chalk writing lines -->
+            <line x1="55" y1="88" x2="145" y2="88" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+            <line x1="55" y1="100" x2="120" y2="100" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <!-- Students desks -->
+            <rect x="35" y="165" width="25" height="8" fill="rgba(139,110,30,0.12)"/>
+            <rect x="70" y="165" width="25" height="8" fill="rgba(139,110,30,0.12)"/>
+            <rect x="105" y="165" width="25" height="8" fill="rgba(139,110,30,0.12)"/>
+            <rect x="140" y="165" width="25" height="8" fill="rgba(139,110,30,0.12)"/>
+            <!-- Teacher silhouette -->
+            <ellipse cx="100" cy="148" rx="10" ry="14" fill="rgba(201,168,76,0.1)"/>
+          </svg>
+          <div class="poster-art-label">Vaa Vaathiyaar</div>
+        </div>
+        <div class="poster-overlay"></div>
+        <div class="card-genre-badge"><div class="badge badge-tamil"><span class="badge-dot"></span> Tamil · Drama</div></div>
+        <div class="card-rating"><svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="card-rating-num">4.1</span></div>
+      </div>
+      <div class="card-body">
+        <img class="card-thumb" src="https://via.placeholder.com/600x340/17100b/f2d498?text=Vaa+Vaathiyaar" alt="Vaa Vaathiyaar poster">
+        <h3 class="card-title">Vaa Vaathiyaar</h3>
+        <div class="card-meta-row"><span class="card-meta">Feb 15, 2026</span><span class="card-meta">Karthi · Krithi Shetty</span><span class="card-meta">Studio Green</span></div>
+        <div class="card-divider"></div>
+        <p class="card-review">"Nalan Kumarasamy's heartfelt ode to teachers and education strikes deep emotional chords. Karthi is effortlessly charming in a role built for mass appeal and genuine feeling."</p>
+        <div class="card-actions">
+          <a href="https://www.youtube.com/results?search_query=Vaa+Vaathiyaar+2026+Tamil+trailer+Karthi" target="_blank" class="card-trailer-btn"><div class="play-circle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>Trailer</a>
+          <div class="card-stars">
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-empty" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ENGLISH ACTION SECTION -->
+<section class="section-wrap" id="action">
+  <div class="section-header animate-in">
+    <div>
+      <p class="section-eyebrow"><span class="deco-line"></span>High Octane 2026</p>
+      <h2 class="section-title">Best English Action</h2>
+    </div>
+    <span class="section-count">03 Films</span>
+  </div>
+  <div class="movies-grid">
+
+    <!-- The Odyssey -->
+    <div class="movie-card animate-in">
+      <div class="movie-card-poster">
+        <div class="movie-card-poster-bg pa-odyssey poster-art">
+          <svg width="200" height="260" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" style="position:absolute;opacity:0.55">
+            <!-- Sea waves -->
+            <path d="M0,190 Q50,175 100,185 Q150,195 200,180 L200,260 L0,260Z" fill="rgba(26,143,160,0.1)"/>
+            <path d="M0,210 Q60,200 110,208 Q160,215 200,200 L200,260 L0,260Z" fill="rgba(26,143,160,0.07)"/>
+            <!-- Ship suggestion -->
+            <polygon points="70,155 100,140 130,155 125,175 75,175" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.15)" stroke-width="0.5"/>
+            <line x1="100" y1="100" x2="100" y2="155" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+            <line x1="70" y1="120" x2="130" y2="120" stroke="rgba(201,168,76,0.12)" stroke-width="0.5"/>
+            <!-- Stars -->
+            <circle cx="50" cy="50" r="1.5" fill="rgba(201,168,76,0.5)"/>
+            <circle cx="160" cy="40" r="1" fill="white" opacity="0.5"/>
+            <circle cx="30" cy="80" r="1" fill="white" opacity="0.3"/>
+            <circle cx="180" cy="90" r="1.5" fill="rgba(201,168,76,0.4)"/>
+          </svg>
+          <div class="poster-art-label">The Odyssey</div>
+        </div>
+        <div class="poster-overlay"></div>
+        <div class="card-genre-badge"><div class="badge badge-action"><span class="badge-dot"></span> Action · Epic</div></div>
+        <div class="card-rating"><svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="card-rating-num">4.6</span></div>
+      </div>
+      <div class="card-body">
+        <img class="card-thumb" src="https://via.placeholder.com/600x340/071219/cdd9ff?text=The+Odyssey" alt="The Odyssey poster">
+        <h3 class="card-title">The Odyssey</h3>
+        <div class="card-meta-row"><span class="card-meta">Jul 2026</span><span class="card-meta">Nolan · Matt Damon</span><span class="card-meta">IMAX Event</span></div>
+        <div class="card-divider"></div>
+        <p class="card-review">"Christopher Nolan transplants Homer's epic into breathtaking IMAX. Damon's Odysseus is world-weary and magnetic. A battle-filled mythological odyssey that ranks among Nolan's very best."</p>
+        <div class="card-actions">
+          <a href="https://www.youtube.com/results?search_query=The+Odyssey+2026+Christopher+Nolan+trailer" target="_blank" class="card-trailer-btn"><div class="play-circle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>Trailer</a>
+          <div class="card-stars">
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-half" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spider-Man -->
+    <div class="movie-card animate-in">
+      <div class="movie-card-poster">
+        <div class="movie-card-poster-bg pa-spiderman poster-art">
+          <svg width="200" height="260" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" style="position:absolute;opacity:0.5">
+            <!-- Web pattern -->
+            <line x1="100" y1="30" x2="100" y2="230" stroke="rgba(192,57,43,0.15)" stroke-width="0.5"/>
+            <line x1="30" y1="130" x2="170" y2="130" stroke="rgba(192,57,43,0.15)" stroke-width="0.5"/>
+            <line x1="45" y1="55" x2="155" y2="205" stroke="rgba(192,57,43,0.1)" stroke-width="0.5"/>
+            <line x1="155" y1="55" x2="45" y2="205" stroke="rgba(192,57,43,0.1)" stroke-width="0.5"/>
+            <!-- Concentric web circles -->
+            <circle cx="100" cy="130" r="30" fill="none" stroke="rgba(192,57,43,0.12)" stroke-width="0.5"/>
+            <circle cx="100" cy="130" r="60" fill="none" stroke="rgba(192,57,43,0.08)" stroke-width="0.5"/>
+            <circle cx="100" cy="130" r="90" fill="none" stroke="rgba(192,57,43,0.06)" stroke-width="0.5"/>
+            <!-- Cityscape -->
+            <rect x="20" y="185" width="20" height="45" fill="rgba(192,57,43,0.08)"/>
+            <rect x="50" y="170" width="25" height="60" fill="rgba(192,57,43,0.06)"/>
+            <rect x="150" y="180" width="20" height="50" fill="rgba(192,57,43,0.08)"/>
+            <rect x="130" y="165" width="18" height="65" fill="rgba(192,57,43,0.06)"/>
+          </svg>
+          <div class="poster-art-label">Spider-Man 4</div>
+        </div>
+        <div class="poster-overlay"></div>
+        <div class="card-genre-badge"><div class="badge badge-action"><span class="badge-dot"></span> Marvel · Action</div></div>
+        <div class="card-rating"><svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="card-rating-num">4.2</span></div>
+      </div>
+      <div class="card-body">
+        <img class="card-thumb" src="https://via.placeholder.com/600x340/140004/ff9c94?text=Spider-Man+4" alt="Spider-Man 4 poster">
+        <h3 class="card-title">Spider-Man 4</h3>
+        <div class="card-meta-row"><span class="card-meta">2026 · Marvel</span><span class="card-meta">Tom Holland · Zendaya</span><span class="card-meta">Summer 2026</span></div>
+        <div class="card-divider"></div>
+        <p class="card-review">"Holland and Zendaya are electric as a real-world couple navigating superhero chaos. A fresh start for Peter Parker that balances college-era charm with pulse-pounding action set-pieces."</p>
+        <div class="card-actions">
+          <a href="https://www.youtube.com/results?search_query=Spider-Man+4+2026+trailer+Tom+Holland" target="_blank" class="card-trailer-btn"><div class="play-circle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>Trailer</a>
+          <div class="card-stars">
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-empty" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crime 101 -->
+    <div class="movie-card animate-in">
+      <div class="movie-card-poster">
+        <div class="movie-card-poster-bg pa-crime poster-art">
+          <svg width="200" height="260" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" style="position:absolute;opacity:0.5">
+            <!-- LA skyline -->
+            <rect x="20" y="170" width="30" height="60" fill="rgba(255,255,255,0.04)"/>
+            <rect x="55" y="150" width="20" height="80" fill="rgba(255,255,255,0.06)"/>
+            <rect x="80" y="140" width="25" height="90" fill="rgba(255,255,255,0.04)"/>
+            <rect x="110" y="160" width="18" height="70" fill="rgba(255,255,255,0.06)"/>
+            <rect x="133" y="145" width="22" height="85" fill="rgba(255,255,255,0.04)"/>
+            <rect x="160" y="175" width="20" height="55" fill="rgba(255,255,255,0.06)"/>
+            <!-- Spotlight / heist light -->
+            <circle cx="100" cy="80" r="40" fill="rgba(255,215,0,0.04)" stroke="rgba(255,215,0,0.08)" stroke-width="0.5"/>
+            <circle cx="100" cy="80" r="20" fill="rgba(255,215,0,0.06)"/>
+            <!-- Diamond shape suggestion -->
+            <polygon points="100,55 120,80 100,105 80,80" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+          </svg>
+          <div class="poster-art-label">Crime 101</div>
+        </div>
+        <div class="poster-overlay"></div>
+        <div class="card-genre-badge"><div class="badge badge-action"><span class="badge-dot"></span> Action · Thriller</div></div>
+        <div class="card-rating"><svg width="11" height="11" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="card-rating-num">4.0</span></div>
+      </div>
+      <div class="card-body">
+        <img class="card-thumb" src="https://via.placeholder.com/600x340/09090a/f5f5ff?text=Crime+101" alt="Crime 101 poster">
+        <h3 class="card-title">Crime 101</h3>
+        <div class="card-meta-row"><span class="card-meta">2026 · Bart Layton</span><span class="card-meta">Chris Hemsworth</span><span class="card-meta">LA Heist Thriller</span></div>
+        <div class="card-divider"></div>
+        <p class="card-review">"A slick, stylish throwback to '90s crime thrillers. Hemsworth's conflicted cop chases brazen LA jewel thieves in a film that lovingly homages Michael Mann's Heat without shame."</p>
+        <div class="card-actions">
+          <a href="https://www.youtube.com/results?search_query=Crime+101+2026+Chris+Hemsworth+trailer" target="_blank" class="card-trailer-btn"><div class="play-circle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>Trailer</a>
+          <div class="card-stars">
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-filled" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path class="star-empty" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BOX OFFICE CHARTS -->
+<section class="chart-section" id="charts">
+  <div class="section-header animate-in">
+    <div>
+      <p class="section-eyebrow"><span class="deco-line"></span>2026 Rankings</p>
+      <h2 class="section-title">Box Office Charts</h2>
+    </div>
+    <span class="section-count">Live Data</span>
+  </div>
+
+  <div class="chart-tabs animate-in">
+    <button class="chart-tab active" onclick="switchTab('india')">Highest Grossing — India</button>
+    <button class="chart-tab" onclick="switchTab('hollywood')">Highest Grossing — Hollywood</button>
+    <button class="chart-tab" onclick="switchTab('tamil')">Best Tamil 2026</button>
+  </div>
+
+  <!-- India Chart -->
+  <div class="chart-content active" id="chart-india">
+    <div class="chart-bar-list animate-in">
+      <div class="chart-row">
+        <div class="chart-rank">01</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:100%;background:linear-gradient(90deg,rgba(201,168,76,0.35),rgba(201,168,76,0.08));"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">Dhurandhar: The Revenge</span>
+              <span class="chart-lang-badge">Hindi</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">₹1,837 Cr<span>Worldwide · #1 India 2026</span></div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-rank">02</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:25%;"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">Border 2</span>
+              <span class="chart-lang-badge">Hindi</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">₹464 Cr<span>Worldwide</span></div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-rank">03</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:19%;"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">Mana Shankara Vara Prasad Garu</span>
+              <span class="chart-lang-badge">Telugu</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">₹350 Cr<span>Worldwide · Chiranjeevi</span></div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-rank">04</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:12%;"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">Karuppu</span>
+              <span class="chart-lang-badge">Tamil</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">₹161 Cr<span>India Gross · Suriya</span></div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-rank">05</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:11%;"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">Vaazha II: Biopic of a Billion Bros</span>
+              <span class="chart-lang-badge">Malayalam</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">₹220 Cr<span>Worldwide</span></div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-rank">06</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:9%;"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">Parasakthi</span>
+              <span class="chart-lang-badge">Tamil</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">₹85 Cr<span>Worldwide · Sivakarthikeyan</span></div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-rank">07</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:9%;"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">The RajaSaab</span>
+              <span class="chart-lang-badge">Telugu</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">₹171 Cr<span>Domestic · Prabhas</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hollywood Chart -->
+  <div class="chart-content" id="chart-hollywood">
+    <div class="chart-bar-list animate-in">
+      <div class="chart-row">
+        <div class="chart-rank">01</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:100%;background:linear-gradient(90deg,rgba(201,168,76,0.35),rgba(201,168,76,0.08));"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">The Super Mario Galaxy Movie</span>
+              <span class="chart-lang-badge">Animation</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">$940M<span>Worldwide · Universal</span></div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-rank">02</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:70%;"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">Project Hail Mary</span>
+              <span class="chart-lang-badge">Sci-Fi</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">$658M<span>Worldwide · MGM</span></div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-rank">03</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:41%;"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">Hoppers</span>
+              <span class="chart-lang-badge">Pixar</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">$383M<span>Worldwide · Disney</span></div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-rank">04</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:23%;"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">Scream 7</span>
+              <span class="chart-lang-badge">Horror</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">$213M<span>Worldwide · Paramount</span></div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-rank">05</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:9%;"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">Wuthering Heights</span>
+              <span class="chart-lang-badge">Drama</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">$84M<span>Domestic · Warner Bros.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tamil Chart -->
+  <div class="chart-content" id="chart-tamil">
+    <div class="chart-bar-list animate-in">
+      <div class="chart-row">
+        <div class="chart-rank">01</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:100%;background:linear-gradient(90deg,rgba(255,107,53,0.3),rgba(255,107,53,0.06));"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">Karuppu</span>
+              <span class="chart-lang-badge">Suriya · RJ Balaji</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">₹161 Cr<span>India Gross (5 Days) · Blockbuster</span></div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-rank">02</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:53%;background:linear-gradient(90deg,rgba(255,107,53,0.2),rgba(255,107,53,0.04));"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">Parasakthi</span>
+              <span class="chart-lang-badge">Sivakarthikeyan</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">₹85 Cr<span>Worldwide · Disaster verdict</span></div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-rank">03</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:36%;background:linear-gradient(90deg,rgba(255,107,53,0.2),rgba(255,107,53,0.04));"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">Vaa Vaathiyaar</span>
+              <span class="chart-lang-badge">Karthi</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">₹58 Cr<span>Worldwide · Hit</span></div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-rank">04</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:33%;background:linear-gradient(90deg,rgba(255,107,53,0.2),rgba(255,107,53,0.04));"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">LIK: Love Insurance Kompany</span>
+              <span class="chart-lang-badge">Rom-Com</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">₹57 Cr<span>Worldwide · Profitable</span></div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-rank">05</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width:24%;background:linear-gradient(90deg,rgba(255,107,53,0.2),rgba(255,107,53,0.04));"></div>
+            <div class="chart-bar-label">
+              <span class="chart-movie-name">Youth (2026)</span>
+              <span class="chart-lang-badge">Action</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-value">₹53 Cr<span>Worldwide · Hit</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL -->
+<section class="section-wrap">
   <div class="section-header animate-in">
     <div>
       <p class="section-eyebrow"><span class="deco-line"></span>Critics Corner</p>
@@ -1575,86 +2020,84 @@
     </div>
     <span class="section-count">Opinions</span>
   </div>
-
   <div class="editorial-grid animate-in">
     <div class="editorial-main">
       <p class="editor-pick-label">Editor's Essay · May 2026</p>
-      <blockquote class="editorial-quote">"2026 is proving to be one of cinema's great renaissance years. Project Hail Mary reminds us why the big screen exists. Hoppers reminds us why Pixar exists. And Wuthering Heights reminds us why literature exists."</blockquote>
+      <blockquote class="editorial-quote">"2026 is proving to be a global cinema renaissance. Project Hail Mary reminds us why the big screen exists. Karuppu reminds us why Suriya exists. And Dhurandhar reminds us why Indian cinema rules the world."</blockquote>
       <p class="editorial-attribution">— Arjun Mehta, Chief Film Critic · CinemaVerse</p>
-
-      <div style="margin-top: 2rem; padding-top: 2rem; border-top: 0.5px solid var(--border-soft);">
-        <p class="section-eyebrow" style="margin-bottom:0.8rem;">Box Office Watch · 2026</p>
+      <div style="margin-top:2rem;padding-top:2rem;border-top:0.5px solid var(--border-soft);">
+        <p class="section-eyebrow" style="margin-bottom:0.8rem;">Global Box Office Snapshot · 2026</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;">
-          <div style="padding:1rem;border:0.5px solid var(--border-soft);border-radius:2px;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.1rem;color:var(--gold);">$658M</div>
-            <div style="font-size:0.68rem;color:var(--text-dim);margin-top:4px;letter-spacing:0.08em;">Project Hail Mary WW</div>
+          <div style="padding:1rem;border:0.5px solid var(--border-soft);">
+            <div style="font-family:'DM Mono',monospace;font-size:1.1rem;color:var(--gold);">$940M</div>
+            <div style="font-size:0.68rem;color:var(--text-dim);margin-top:4px;">Mario Galaxy — #1 Hollywood</div>
           </div>
-          <div style="padding:1rem;border:0.5px solid var(--border-soft);border-radius:2px;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.1rem;color:var(--gold);">$383M</div>
-            <div style="font-size:0.68rem;color:var(--text-dim);margin-top:4px;letter-spacing:0.08em;">Hoppers Worldwide</div>
+          <div style="padding:1rem;border:0.5px solid var(--border-soft);">
+            <div style="font-family:'DM Mono',monospace;font-size:1.1rem;color:var(--gold);">₹1,837Cr</div>
+            <div style="font-size:0.68rem;color:var(--text-dim);margin-top:4px;">Dhurandhar — #1 India</div>
           </div>
-          <div style="padding:1rem;border:0.5px solid var(--border-soft);border-radius:2px;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.1rem;color:var(--gold);">$213M</div>
-            <div style="font-size:0.68rem;color:var(--text-dim);margin-top:4px;letter-spacing:0.08em;">Scream 7 Worldwide</div>
+          <div style="padding:1rem;border:0.5px solid var(--border-soft);">
+            <div style="font-family:'DM Mono',monospace;font-size:1.1rem;color:var(--gold);">₹161Cr</div>
+            <div style="font-size:0.68rem;color:var(--text-dim);margin-top:4px;">Karuppu — #1 Tamil 2026</div>
           </div>
-          <div style="padding:1rem;border:0.5px solid var(--border-soft);border-radius:2px;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.1rem;color:var(--gold);">#2</div>
-            <div style="font-size:0.68rem;color:var(--text-dim);margin-top:4px;letter-spacing:0.08em;">Hail Mary · 2026 Rank</div>
+          <div style="padding:1rem;border:0.5px solid var(--border-soft);">
+            <div style="font-family:'DM Mono',monospace;font-size:1.1rem;color:var(--gold);">4.6</div>
+            <div style="font-size:0.68rem;color:var(--text-dim);margin-top:4px;">The Odyssey — Top Rated</div>
           </div>
         </div>
       </div>
     </div>
-
     <div class="editorial-side">
       <div class="editorial-side-item">
-        <p class="editor-pick-label">Quick Take</p>
-        <h4 class="side-item-title">Scream 7 — A Franchise at a Crossroads</h4>
-        <p class="side-item-snippet">Neve Campbell's return adds dignity. Kevin Williamson's direction is confident in act one. But a chaotic third act squanders goodwill. Ghostface fans will debate this one for years.</p>
+        <p class="editor-pick-label">Tamil Discovery</p>
+        <h4 class="side-item-title">Karuppu — Suriya's Career Best</h4>
+        <p class="side-item-snippet">RJ Balaji channels divine mythology into a mass entertainer. Suriya as a lawyer-deity is equal parts worship and entertainment. First film to gross ₹100Cr India for the star.</p>
       </div>
       <div class="editorial-side-item">
-        <p class="editor-pick-label">Discovery of the Year</p>
-        <h4 class="side-item-title">Hoppers — Pixar's Triumphant Return</h4>
-        <p class="side-item-snippet">The $383M worldwide haul doesn't lie. Daniel Chong's robotic beaver adventure is Pixar operating at peak emotional intelligence. SZA's end-credits track is the icing.</p>
+        <p class="editor-pick-label">Hollywood Watch</p>
+        <h4 class="side-item-title">The Odyssey — Nolan's Next Masterpiece</h4>
+        <p class="side-item-snippet">Christopher Nolan adapts Homer with IMAX ambition. Damon is revelatory. Expected to challenge for the year's highest Hollywood gross when it lands this July.</p>
       </div>
       <div class="editorial-side-item">
-        <p class="editor-pick-label">Must-See</p>
-        <h4 class="side-item-title">Wuthering Heights — Literary Gold</h4>
-        <p class="side-item-snippet">Brontë's Yorkshire gothic rendered with absolute fidelity and flair. Breathtaking cinematography frames two of the year's finest lead performances.</p>
+        <p class="editor-pick-label">Bollywood Record</p>
+        <h4 class="side-item-title">Dhurandhar — India's Biggest 2026</h4>
+        <p class="side-item-snippet">₹1,837 crore worldwide makes Dhurandhar: The Revenge the undisputed king of Indian box office in 2026 — surpassing Border 2 by nearly 4x. A commercial juggernaut.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── FOOTER ─── -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div>
       <div class="footer-brand">CinemaVerse</div>
-      <p class="footer-tagline">Honest, passionate film criticism since the reels were still spinning. Dedicated to the art of cinema in all its forms.</p>
+      <p class="footer-tagline">Honest, passionate film criticism covering Tamil cinema, Bollywood, and Hollywood. Built for cinema lovers everywhere.</p>
     </div>
     <div>
       <p class="footer-col-title">Navigate</p>
       <ul class="footer-links">
         <li><a href="#home">Home</a></li>
-        <li><a href="#movies">2026 Films</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#">Box Office</a></li>
+        <li><a href="#movies">Hollywood</a></li>
+        <li><a href="#tamil">Tamil</a></li>
+        <li><a href="#action">Action</a></li>
+        <li><a href="#charts">Box Office</a></li>
       </ul>
     </div>
     <div>
       <p class="footer-col-title">Genres</p>
       <ul class="footer-links">
-        <li><a href="#">Sci-Fi</a></li>
-        <li><a href="#">Horror</a></li>
-        <li><a href="#">Animation</a></li>
-        <li><a href="#">Drama</a></li>
-        <li><a href="#">Bollywood</a></li>
+        <li><a href="#movies">Sci-Fi</a></li>
+        <li><a href="#movies">Horror</a></li>
+        <li><a href="#movies">Animation</a></li>
+        <li><a href="#tamil">Tamil Drama</a></li>
+        <li><a href="#action">Action / Thriller</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 CinemaVerse · All reviews are editorial opinion · No affiliation with studios</p>
-    <p class="footer-copy">Built for cinema lovers · May 2026</p>
+    <p class="footer-copy">© 2026 CinemaVerse · All reviews are editorial opinion · No studio affiliation</p>
+    <p class="footer-copy">Built by S.HEMANTH &amp;· May 2026</p>
   </div>
 </footer>
 
@@ -1663,17 +2106,15 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, i * 80);
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
 
-  // Smooth nav highlight
+  // Nav active state
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
@@ -1684,14 +2125,37 @@
         if (target) {
           const top = target.offsetTop - 100;
           const bottom = top + target.offsetHeight;
-          if (scrollY >= top && scrollY < bottom) {
-            link.style.color = 'var(--gold)';
-          } else {
-            link.style.color = '';
-          }
+          link.style.color = (scrollY >= top && scrollY < bottom) ? 'var(--gold)' : '';
         }
       }
     });
+  });
+
+  // Chart tab switching
+  function switchTab(tabName) {
+    document.querySelectorAll('.chart-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.chart-content').forEach(c => c.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById('chart-' + tabName).classList.add('active');
+
+    // Animate bars on switch
+    const fills = document.querySelectorAll('#chart-' + tabName + ' .chart-bar-fill');
+    fills.forEach(f => {
+      const targetWidth = f.style.width;
+      f.style.width = '0';
+      setTimeout(() => f.style.width = targetWidth, 50);
+    });
+  }
+
+  // Animate bars on page load
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.querySelectorAll('#chart-india .chart-bar-fill').forEach(f => {
+        const w = f.style.width;
+        f.style.width = '0';
+        setTimeout(() => { f.style.width = w; }, 200);
+      });
+    }, 800);
   });
 </script>
 </body>
